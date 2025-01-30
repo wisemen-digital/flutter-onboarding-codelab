@@ -1,0 +1,25 @@
+{
+  "packageManager": "pnpm@9.9.0",
+  "name": "codelab-bootstrap",
+  "version": "1.0.0",
+  "description": "use nodemon to watch changes on md file, rebuild codelab on saves",
+  "main": "index.js",
+  "scripts": {
+    "install-claat": "test -f claat || curl -Lo claat \"https://github.com/googlecodelabs/tools/releases/latest/download/claat-$(uname -s)-amd64\" && chmod +x claat",
+    "merge-md-files": "cat pages/*.md > index.md",
+    "docs:build": "pnpm install-claat && pnpm merge-md-files && ./claat export -o dist index.md",
+    "docs:serve": "pnpm install-claat && nodemon --watch pages --exec 'pnpm merge-md-files && ./claat export -o dist index.md && http-server dist/index'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wisemen-digital/flutter-onboarding-codelab/tree/main"
+  },
+  "keywords": [
+    "codelab"
+  ],
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "kill-port": "^1.6.1",
+    "nodemon": "^2.0.3"
+  }
+}
