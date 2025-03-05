@@ -18,12 +18,12 @@ floatingActionButton: FloatingActionButton.small(
 
 ### 5.1 AddTodoScreen
 Run the feature Brick. In your terminal, run: `mason make wise_feature`.
-Now you should be able to create a new feature called `add-todo`.
+Now you should be able to create a new feature called `add_todo`.
 
 Don't hesitate to ask your buddy for help if you're stuck.
 
 ### 5.2 navigation
-Next, add a `navigateToAddTodo` inside the `todosOverviewNavigationManager` class and implement it in the impl class.
+Next, add a `navigateToAddTodo` inside the `TodosOverviewNavigationManager` class and implement it in the impl class.
 
 If the add todo feature is ready, create a PR and assign your buddy as a reviewer.
 

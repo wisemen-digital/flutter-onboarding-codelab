@@ -69,67 +69,74 @@ import 'package:wisewidgetslibrary/wise_widgets_library.dart';
 
 import '../../../theme/theme.dart';
 
-// A custom button widget that adapts to both Cupertino (iOS) and Material (Android) styles (PlatformWidget).
+/// A custom button widget that adapts to both Cupertino (iOS) and Material (Android) styles (PlatformWidget).
 class PrimaryButton extends PlatformWidget {
-  // Constructor to initialize the button's properties.
+  /// Constructor to initialize the button's properties.
   const PrimaryButton({
     super.key,
-    required this.text, // The button label text.
-    required this.onPressed, // The callback function when pressed.
-    this.isDisabled = false, // Whether the button is disabled.
-    this.isLoading = false, // Whether the button is in a loading state.
-    this.height = HEIGHT, // The height of the button.
-    this.leading, // An optional leading widget (icon, for example).
-    this.trailing, // An optional trailing widget (icon, for example).
+    required this.text,
+    required this.onPressed,
+    this.isDisabled = false,
+    this.isLoading = false,
+    this.height = HEIGHT,
+    this.leading,
+    this.trailing,
   });
 
+  /// The button height.
   final double height;
+  /// The button label text.
   final String text;
+  /// The callback function when pressed.
   final VoidCallback onPressed;
+  /// Whether the button is disabled.
   final bool isDisabled;
+  /// Whether the button is in a loading state.
   final bool isLoading;
+  /// An optional leading widget (icon, for example).
   final Widget? leading;
+  /// An optional trailing widget (icon, for example).
   final Widget? trailing;
 
-  // Default button height.
+  /// Default button height.
   static const double HEIGHT = 48;
-  // Border radius for rounded corners.
+  /// Border radius for rounded corners.
   static final BORDER_RADIUS = BorderRadius.circular(5);
 
-  // Cupertino (iOS-style) button implementation.
+  /// Cupertino (iOS-style) button implementation.
   @override
   Widget createCupertinoWidget(BuildContext context) {
     return SizedBox(
-      height: height, // Ensures the button maintains the specified height.
+      height: height, /// Ensures the button maintains the specified height.
       child: CupertinoButton(
-        padding: padH8, // Horizontal padding (assumed predefined).
-        onPressed: isDisabled || isLoading ? null : onPressed, // Disables interaction when necessary.
+        padding: padH8, /// Horizontal padding (assumed predefined).
+        onPressed: isDisabled || isLoading ? null : onPressed, /// Disables interaction when necessary.
         disabledColor: context.sanJuan.withValues(
-          alpha: .4, // Reduced opacity when disabled.
+          alpha: .4, /// Reduced opacity when disabled.
         ),
-        color: context.sanJuan, // Button background color.
-        borderRadius: BORDER_RADIUS, // Rounded corners.
+        color: context.sanJuan, /// Button background color.
+        borderRadius: BORDER_RADIUS, /// Rounded corners.
         child: Center(
           child: AnimatedSwitcher(
-            duration: Duration.zero, // Instantly switches between loading and text states.
+            duration: Duration.zero, /// Instantly switches between loading and text states.
             child: isLoading
-                    ? CupertinoActivityIndicator( // Shows a loading indicator when isLoading is true.
+                    ? CupertinoActivityIndicator( /// Shows a loading indicator when isLoading is true.
               color: context.catskillWhite,
             )
                     : Row(
-              mainAxisSize: MainAxisSize.min, // The row takes only necessary space.
-              spacing: 8, // Spacing between child elements.
+              mainAxisSize: MainAxisSize.min, /// The row takes only necessary space.
+              spacing: 8, /// Spacing between child elements.
               children: [
-                if (leading != null) leading!, // Displays leading widget if provided.
+                if (leading != null) leading!, /// Displays leading widget if provided.
                 Text(
                   text,
                   style: context.button.copyWith(
                     color: isDisabled
-                            ? context.catskillWhite.withValues(alpha: .4) // Faded color when disabled.
-                            : context.catskillWhite, // Default text color.
+                            ? context.catskillWhite.withValues(alpha: .4) /// Faded color when disabled.
+                            : context.catskillWhite, /// Default text color.
                   ),
                 ),
-                if (trailing != null) trailing!, // Displays trailing widget if provided.
+                if (trailing != null) trailing!, /// Displays trailing widget if provided.
               ],
             ),
           ),
@@ -138,43 +145,43 @@ class PrimaryButton extends PlatformWidget {
     );
   }
 
-  // Material (Android-style) button implementation.
+  /// Material (Android-style) button implementation.
   @override
   Widget createMaterialWidget(BuildContext context) {
     return SizedBox(
-      height: height, // Ensures the button maintains the specified height.
+      height: height, /// Ensures the button maintains the specified height.
       child: MaterialButton(
         height: height,
-        onPressed: isDisabled || isLoading ? null : onPressed, // Disables interaction when necessary.
+        onPressed: isDisabled || isLoading ? null : onPressed, /// Disables interaction when necessary.
         disabledColor: context.sanJuan.withValues(
-          alpha: .4, // Reduced opacity when disabled.
+          alpha: .4, /// Reduced opacity when disabled.
         ),
-        color: context.sanJuan, // Button background color.
+        color: context.sanJuan, /// Button background color.
         shape: RoundedRectangleBorder(
-          borderRadius: BORDER_RADIUS, // Rounded corners.
+          borderRadius: BORDER_RADIUS, /// Rounded corners.
         ),
-        elevation: 0, // No shadow effect.
+        elevation: 0, /// No shadow effect.
         child: Center(
           child: AnimatedSwitcher(
-            duration: Durations.short1, // Short animation duration when switching child widgets.
+            duration: Durations.short1, /// Short animation duration when switching child widgets.
             child: isLoading
-                    ? CircularProgressIndicator( // Shows a loading indicator when isLoading is true.
+                    ? CircularProgressIndicator( /// Shows a loading indicator when isLoading is true.
               color: context.catskillWhite,
             )
                     : Row(
-              mainAxisSize: MainAxisSize.min, // The row takes only necessary space.
-              spacing: 8, // Spacing between child elements.
+              mainAxisSize: MainAxisSize.min, /// The row takes only necessary space.
+              spacing: 8, /// Spacing between child elements.
               children: [
-                if (leading != null) leading!, // Displays leading widget if provided.
+                if (leading != null) leading!, /// Displays leading widget if provided.
                 Text(
                   text,
                   style: context.button.copyWith(
                     color: isDisabled
-                            ? context.catskillWhite.withValues(alpha: .4) // Faded color when disabled.
-                            : context.catskillWhite, // Default text color.
+                            ? context.catskillWhite.withValues(alpha: .4) /// Faded color when disabled.
+                            : context.catskillWhite, /// Default text color.
                   ),
                 ),
-                if (trailing != null) trailing!, // Displays trailing widget if provided.
+                if (trailing != null) trailing!, /// Displays trailing widget if provided.
               ],
             ),
           ),
@@ -188,7 +195,7 @@ class PrimaryButton extends PlatformWidget {
 Make sure to commit these changes.
 
 ### 3.6 Login screen
-First off you will need our custom platform appbar widget. In your terminal, run: `mason make wise_nav_bar`.
+First off you will need our custom platform appbar widget. In your terminal, run: `flutter pub add wise_nav_bar`.
 
 Now you are going to add the login button to the login screen. Open the `login_screen.dart` file and add the just created button to the screen on the correct place.
 use `PlatformAppBar.text()` and add a title and background color according to the design. The title should be 'Login' and 'Inloggen' for the Dutch version. We achieve this by localizing the string.

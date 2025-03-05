@@ -25,7 +25,7 @@ Add your base url to the flavors like this:
 static String get baseUrl {
   switch (appFlavor) {
     case Flavor.DEVELOPMENT:
-      return 'https://onboarding-todo-api.development.appwi.se';
+      return 'https://onboarding-todo.internal.appwi.se/';
     case Flavor.STAGING:
     case Flavor.QA:
     case Flavor.PRODUCTION:
@@ -34,6 +34,13 @@ static String get baseUrl {
   }
 }
 ```
+
+These flavors are used to switch between different environments. The baseUrl is used to make API calls to the correct environment.
+We use these different environments to test the app in different stages of development.
+* Development: Used for local development
+* QA: Used for testing the app before it goes to Staging
+* Staging: Used by the client to test the app before it goes to Production
+* Production: Used for the final version of the app
 
 Add client id and client secrets in the same way:
 * Client ID: `bdba526c-31b3-4740-a4e6-bfbaf96ec62e`
@@ -49,7 +56,7 @@ static String get applicationId {
     case Flavor.QA:
     case Flavor.PRODUCTION:
     default:
-      return 'com.energyking.app.development';
+      return 'com.wisemen.app.development';
   }
 }
 ```
@@ -72,22 +79,17 @@ You may now commit your local changes to the main branch with an 'init project' 
 
 ### 2.2 Our Branching strategy
 
-We use the **Gitflow** branching strategy. You can find more information about this
-strategy [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+We use Trunk-base development. You can find more information about this
+strategy [here](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development).
 
-* **develop** branch: this branch contains the latest development changes
-* **QA** branch: this branch is used to test the features before they are merged into the staging branch
-* **staging** branch: this branch is used send to the client for testing
-* **master** branch: this branch contains the latest release of the app
+* **main** branch: this is the main branch. This branch is always deployable and contains the latest release.
 
-* **feature/...** branches: these branches are used to develop new features for the upcoming release and are only
-  pushed to develop
-* **bugfix/...** branches: these branches are used to fix bugs in the app and are only pushed to develop
+* **feature/...** branches: these branches are used to develop new features for the upcoming release and are pushed to main
+* **bugfix/...** branches: these branches are used to fix bugs in the app and are pushed to main
 
-Make sure you have created all 4 'standard' branches. You can do this by either using the terminal, IDE or a GUI
-tool like [SourceTree](https://www.sourcetreeapp.com/) or [Fork](https://git-fork.com/).
+You can use git by either using the terminal, IDE or a GUI tool like [SourceTree](https://www.sourcetreeapp.com/) or [Fork](https://git-fork.com/).
 
-Now checkout the **develop** branch and create a new feature branch called **feature/setup-theme**.
+Now checkout the **main** branch and create a new feature branch called **feature/setup-theme**.
 
 ### 2.3 Theme
 #### 2.3.1 Colors
