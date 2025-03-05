@@ -3,7 +3,6 @@ We use zitadel as our identity provider. For more information about zitadel, ple
 Create a new branch from the `feature/setup-theme` branch called `feature/login`.
 
 ### 3.1 Login Brick
-We are going to run our first Brick. A Brick is a code generator that generates code for you. We use Bricks to generate boilerplate code for us. This way we can focus on the important stuff.
 Run the login Brick from your terminal by executing `mason make wise_login`.
 
 Open the terminal and check if your buildrunner is still working. if not: execute `buildrunner`

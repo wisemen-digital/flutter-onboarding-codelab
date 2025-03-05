@@ -1,6 +1,8 @@
 ## Create a new App
 Start off by creating a new private github Repository on your personal account. Name it `wiselab-flutter-<name>`.
 
+We are going to run our first Brick. A Brick is a code generator that generates code for you. We use Bricks to generate boilerplate code for us. This way we can focus on the important stuff.
+
 Open a terminal and navigate to a project folder on your machine where the project will be stored. Before cloning your repository, use the terminal and execute 'mason make wise_starter_project'. This will create a new Flutter project with our own custom template project.
 
 Enter your project name: `wiselab_flutter_<name_lastname>` Note: The name should be in snake_case.
@@ -166,3 +168,5 @@ extension TextStyleExtension on BuildContext {
 This extension will make it easier to access the text styles in the app from the context.
 
 You may now commit these theming changes to the created branch an create a PR to the develop branch. Assign your buddy as a reviewer.
+
+*If you need help with creating or resolving your pull request consult [our full guide](https://appwise.atlassian.net/wiki/x/DoBdPQ)*

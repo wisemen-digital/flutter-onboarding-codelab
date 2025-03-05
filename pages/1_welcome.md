@@ -52,18 +52,20 @@ We operate within a circle-based structure, which includes:
 - **Support** - We are one team and there to help eachother. Feel free to ask for help regarding Flutter or mobile questions in the circle-flutter Slack channel, private message or in person!
 
 #### 1.1 Flutter Setup
-##### InstalL VS Code
+### Install VS Code
 Install VS Code [with this link](https://code.visualstudio.com/).
-##### Install Xcode
+### Install Xcode
 In order to develop iOS apps you will need to install Xcode. You can find the app in the [App Store](https://apps.apple.com/be/app/xcode/id497799835?l=nl&mt=12). After downloading you should automatically have an app called "simulator" in which you will be able to open several virtual devices to run and test your Flutter apps.
-##### Install CocoaPods
-Follow [this tutorial](https://docs.flutter.dev/get-started/install/macos/mobile-ios#install-cocoapods) to install CocoaPods.
-##### Android Studio
+### Install CocoaPods
+Installing CocoaPods via gem (as Flutter tutorials suggest) is a bit of a hassle. It's easier to use brew for this.
+First install [Homebrew](https://brew.sh/)
+Next up follow [this tutorial](https://www.geeksforgeeks.org/how-to-install-cocoapods-in-flutter/) to install CocoaPods. Only execute the installation via Homebrew (not gem).
+### Android Studio
 Install Android studio [with this link](https://developer.android.com/studio/?gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO3zEhdK4_I0CEZic3UH4dl-9gVXuHFR9dCl3TOHKjmv3xWLU3UxfhYaApfAEALw_wcB&gclsrc=aw.ds).
-##### Install the Flutter SDK
+### Install the Flutter SDK
 Follow the steps in the following guide:
 https://docs.flutter.dev/get-started/install/macos/mobile-ios#install-the-flutter-sdk
-##### Install Flutter extensions
+### Install Flutter extensions
 Open VS Code and open the sidebar on the left. Click on the extensions tab and search for the "Flutter" extension or just visit the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) and download the flutter extension. This will automatically install the dart extension as well.
 
 Also download the following extensions:
@@ -74,8 +76,50 @@ Other usefull extensions:
 - Better Comments: [marketplace link](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
 - Image preview: [marketplace link](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
 - Material Icon Theme: [marketplace link](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- YAML Language Support: [marketplace link](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
+- Gradle Language Support: [marketplace link](https://marketplace.visualstudio.com/items?itemName=naco-siren.gradle-language)
+- Gitlens: [marketplace link](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+- Riverpod snippets: [marketplace link](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
+- Flutter inlt: [marketplace link](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
+- Error lens: [marketplace link](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
+- Copy widget: [marketplace link](https://marketplace.visualstudio.com/items?itemName=FushiArt.copywidget)
+- Close tabs to the left: [marketplace link](https://marketplace.visualstudio.com/items?itemName=ctf0.close-tabs-to-the-left)
+- Copilot: [marketplace link](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - Surprise (download at your own risk): [marketplace link](https://marketplace.visualstudio.com/items?itemName=VirejDasani.incredibly-in-your-face)
 
+### Install Mason & Bricks
+Later in this codelab you will learn about bricks. For these to work you will need to install Mason. By now you should already have Homebrew installed. You can use brew to install all kind of packages on your mac. To install Mason enter the following commands in the terminal:
+```
+brew tap felangel/mason
+brew install mason
+```
+If this is your first time this will not have any effect, but when updating the bricks you need to clear your cache:
+```
+mason cache clear
+```
+
+Get all the bricks from brickhub (make sure to add the -g flag)
+```
+mason add wise_starter_project -g
+mason add wise_controller -g
+mason add wise_feature -g
+```
+[Click this link](https://brickhub.dev/search?q=wise) to check if you need any additional bricks to install (this guide normally already contains every brick we've created)
+
+Execute the next command to check if you have the latest versions
+```
+mason list -g
+```
+Verify that all the bricks are from registry.brickhub.dev like below
+```
+/Users/your_beautiful_name/.mason-cache/global
+├── wise_controller 0.1.0+2 -> registry.brickhub.dev
+├── wise_feature 0.1.0+2 -> registry.brickhub.dev
+└── wise_starter_project 0.1.0+2 -> registry.brickhub.dev
+```
+**If this is the case you should be ready to go!**
+
+*If you need more info on the bricks check [our guide](https://appwise.atlassian.net/wiki/x/C4BxP) for more info.*
 ### 2. Prerequisites
 
 * Basic knowledge of Dart
