@@ -29,6 +29,10 @@ If the add todo feature is ready, create a PR and assign your buddy as a reviewe
 
 **Before creating a pull request make sure to go over our [code conventions](https://appwise.atlassian.net/wiki/spaces/CF/pages/1029537806/Pull+Requests#Conventions) and try to improve your code where needed.**
 
+**Follow the steps in the [create a pull request section](https://appwise.atlassian.net/wiki/spaces/CF/pages/1029537806/Pull+Requests#Create-a-PR) of our guide**
+
+💡 Tip: When using a simulator, use `cmd + r` to start and stop a screenrecording
+
 ### 6 Feature: Styling overview
 Create a new branch from the `feature/add-todo` branch called `feature/styling-overview`.
 
