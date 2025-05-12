@@ -5,7 +5,7 @@ We are going to run our first Brick. A Brick is a code generator that generates 
 
 Open a terminal and navigate to a project folder on your machine where the project will be stored. Before cloning your repository, use the terminal and execute 'mason make wise_starter_project'. This will create a new Flutter project with our own custom template project.
 
-Enter your project name: `wiselab_flutter_<name_lastname>` Note: The name should be in snake_case.
+Enter your project name: `wiselab_flutter_<name_last_name>` Note: The name should be in snake_case.
 Enter the app name: `wiselab_flutter`
 The rest of the questions can be entered with the default values. Then press Y to finish.
 

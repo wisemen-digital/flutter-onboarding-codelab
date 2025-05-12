@@ -27,12 +27,12 @@ At Wisemen, we use the following tools daily:
 - **Google Drive** – As a central document storage. Every project has it's own folder, here you can place every file related to the project like documentation, screenshots... Also we as Flutter-team have [our own space](https://drive.google.com/drive/folders/1Fr92dpOKxVC3u6ZwmlUNwtYjQUw0XwT9).
 - **GitHub** – For version control and code review.
 - **Proxyman** – To monitor, debug and test API-calls.
-- **1password** - Our passwordmanager where you can store your personal credentials and access sensitive information about our apps like environment files, keystores...
+- **1password** - Our password manager where you can store your personal credentials and access sensitive information about our apps like environment files, keystores...
 
 Some other tools that might be useful are:
-- **Rapidapi (formerly known as Paw)** – To test and modify API-calls and much more (Postman can also be used).
+- **RapidApi (formerly known as Paw)** – To test and modify API-calls and much more (Postman can also be used).
 - **Fork** - A git client with a GUI, has a very good overview unlike some other tools.
-- **Setapp** - A subscrition service we offer with a bunch of usefull tools.
+- **Setapp** - A subscription service we offer with a bunch of useful tools.
 - **Paste** - A clipboard manager to keep your copy-paste history and use it whenever you want.
 
 #### Flutter Circle
@@ -49,7 +49,7 @@ We operate within a circle-based structure, which includes:
     - **Varia** – A fun closing round where everyone shares an interesting fact or event.
 - **Rocks** – Key goals we focus on (often quarterly). These are bigger goals we work towards and often form a workgroup (see below).
 - **Workgroups** – Small teams dedicated to specific topics or improvements.
-- **Support** - We are one team and there to help eachother. Feel free to ask for help regarding Flutter or mobile questions in the circle-flutter Slack channel, private message or in person!
+- **Support** - We are one team and there to help each other. Feel free to ask for help regarding Flutter or mobile questions in the circle-flutter Slack channel, private message or in person!
 
 #### 1.1 Flutter Setup
 ### Install VS Code
@@ -72,7 +72,7 @@ Also download the following extensions:
 - Dart Barrel File Generator: [marketplace link](https://marketplace.visualstudio.com/items?itemName=miquelddg.dart-barrel-file-generator)
 - Flutter Intl: [marketplace link](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
 
-Other usefull extensions:
+Other useful extensions:
 - Better Comments: [marketplace link](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
 - Image preview: [marketplace link](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
 - Material Icon Theme: [marketplace link](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
@@ -80,7 +80,7 @@ Other usefull extensions:
 - Gradle Language Support: [marketplace link](https://marketplace.visualstudio.com/items?itemName=naco-siren.gradle-language)
 - Gitlens: [marketplace link](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 - Riverpod snippets: [marketplace link](https://marketplace.visualstudio.com/items?itemName=robert-brunhage.flutter-riverpod-snippets)
-- Flutter inlt: [marketplace link](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
+- Flutter intl: [marketplace link](https://marketplace.visualstudio.com/items?itemName=localizely.flutter-intl)
 - Error lens: [marketplace link](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
 - Copy widget: [marketplace link](https://marketplace.visualstudio.com/items?itemName=FushiArt.copywidget)
 - Close tabs to the left: [marketplace link](https://marketplace.visualstudio.com/items?itemName=ctf0.close-tabs-to-the-left)
