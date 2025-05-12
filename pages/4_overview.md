@@ -7,7 +7,7 @@ Enter the feature's name: `todos-overview`
 We'll be using all modules, so press enter to confirm. This will create a new feature, next up we'll run our build runner again.
 
 This will be the main screen of our app. So we need to make sure this is where the user ends up after logging in or opening the app.
-Replace all the references to the `EmptyScreenRoute` in the `auth_guard.dart` and `login_navigation_mananger_impl` with the `TodosOverviewScreenRoute`.
+Replace all the references to the `EmptyScreenRoute` in the `auth_guard.dart` and `login_navigation_manager_impl` with the `TodosOverviewScreenRoute`.
 After doing this, you may hot restart and end up in the `TodosOverviewScreen`.
 
 ### 4.1 Networking
@@ -92,7 +92,7 @@ class TodosTable extends Table {
 ```
 Make sure to add the necessary fields.
 
-Now you can create an extension function on your todo dto model to map it to the table model:
+Now you can create an extension function on your todo dto model to map it to the table model (repositories/dto_mapper):
 ```dart
 extension TodoDTOMapper on TodoDTO {
   TodosTableCompanion toCompanion() {
@@ -122,17 +122,15 @@ class TodosDao extends DatabaseAccessor<Database> with _$TodosDaoMixin {
   TodosDao(super.attachedDatabase);
 
   Future<void> insertTodos({
-    required List<TodoDTO> todoDTOs,
+    required Iterable<TodosTableCompanion> todos,
   }) async {
     await batch(
       (batch) => batch.insertAllOnConflictUpdate(
         todosTable,
-        todoDTOs.map(
-          (e) => e.toCompanion(),
-        ),
+        todos,
       ),
     );
-    await _deleteTodos(todoDTOs: todoDTOs);
+    await _deleteTodos(todos: todos);
   }
 
   Stream<List<TodoObject>> getTodos({
@@ -148,11 +146,11 @@ class TodosDao extends DatabaseAccessor<Database> with _$TodosDaoMixin {
   }
 
   Future<void> _deleteTodos({
-    required List<TodoDTO> todoDTOs,
+    required Iterable<TodosTableCompanion> todos,
   }) async {
     await (delete(todosTable)
           ..where(
-            (tbl) => tbl.uuid.isNotIn(todoDTOs.map((e) => e.uuid).toList()),
+            (tbl) => tbl.uuid.isNotIn(todos.map((e) => e.uuid.value).toList()),
           ))
         .go();
   }
@@ -261,7 +259,7 @@ Future<void> getPaginatedTodos({required int limit, required int offset}) async 
         );
     final paginatedTodos = Paginated<TodoDTO>.fromJson(todos, TodoDTO.fromJson);
     await ref.read(todosDaoProvider).insertTodos(
-          todoDTOs: paginatedTodos.items,
+          todoDTOs: paginatedTodos.items.map((todo) => todo.toCompanion()),
         );
   } catch (error) {
     rethrow;
@@ -286,7 +284,7 @@ Future<List<Todo>> getTodos({required int limit, required int offset}) async {
 
 This function has a return type of `List<Todo>` because this function returns the data to the UI. It requires 2 parameters: `limit` and `offset`. These are used to paginate the data. The function reads the todos from the local database and maps them to a `Todo` object.
 
-We still need to add the map function. Add the following code to the `todos_table.dart`. This code will map the table model to the feature model.
+We still need to add the map function. Add the following code to `repositories/table_mappers/todos_table_mapper.dart`. This code will map the table model to the feature model.
 ```dart
 extension TodosTableMapper on TodoObject {
   Todo toModel() => Todo(
@@ -428,7 +426,7 @@ class TodosOverviewScreen extends ConsumerWidget {
 
 Start by switching the `StateLessWidget` to a `ConsumerWidget`. The consumer widget is a widget that can read providers and listen to changes.
 Change the body with a `CustomScrollView`. This is a scrollable view that allows you to create custom scroll effects.
-Add a `PlatformSliverAppBar` with the title 'My Todos'. This is a custom appbar that adapts to both iOS and Android styles. Slivers are scrollable areas that can be composed to create custom scroll effects.
+Add a `PlatformSliverAppBar` with the title 'My Todos'. This is a custom app bar that adapts to both iOS and Android styles. Slivers are scrollable areas that can be composed to create custom scroll effects.
 Add a `SliverPadding` with padding and a `PagedSliverList`. This is a sliver list that fetches data from the `PagingController` and displays it in a list.
 The `PagedSliverList` has a `separatorBuilder` that adds a gap between the items.
 The `builderDelegate` is a delegate that builds the list items.
@@ -440,7 +438,7 @@ scaffoldBackgroundColor: _AppColors.catskillWhite.white,
 ```
 
 This will only apply on Android. For iOS, we need to add the background color to the screen.
-Open the `todos_overview_screen.dart` and add the following line in the scaffold and the appbar:
+Open the `todos_overview_screen.dart` and add the following line in the scaffold and the app bar:
 ```dart
 backgroundColor: context.catskillWhite,
 ```
