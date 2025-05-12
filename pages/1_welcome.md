@@ -129,6 +129,6 @@ Verify that all the bricks are from registry.brickhub.dev like below
 ### 3. What are you going to build?
 
 In this CodeLab you are going to build a simple Todo app in Flutter. The app will contain a few screens where the user can create and manage tasks. The requirements are written out in Linear **TODO: Add Linear**.
-The designs for this app are here: [Figma wire frames](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
+The designs for this app are here: [Figma wireframes](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
 
 ### Let's get started!
