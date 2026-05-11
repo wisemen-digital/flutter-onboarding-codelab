@@ -20,6 +20,6 @@
   "dependencies": {
     "http-server": "^14.1.1",
     "kill-port": "^2.0.1",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.14"
   }
 }
