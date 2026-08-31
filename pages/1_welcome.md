@@ -37,18 +37,16 @@ Some other tools that might be useful are:
 
 #### Flutter Circle
 We operate within a circle-based structure, which includes:
-- **Meetings** – 2 weekly check-in to discuss the following topics:
+- **Meetings** – monthly check-in to discuss the following topics:
     - **What went good/bad** – A quick round to get everyone involved and settled into the meeting. Discussions that come up here are parked and addressed later in the meeting or at another time.
     - **General** – General points, such as a new intern starting.
     - **PR comments** – PR comments we’ve received or given in the past period. So that everyone is up-to-date with new insights like f.e.: more efficient ways of implementing. This also reminds us of general principles that may be forgotten.
     - **Cool things created** – Interesting packages we've used or cool self-made components worth sharing.
-    - **Rocks/Goals** – An update on our progress on these topics.
     - **Expertise** – Per stack (iOS and Android), a few Flutter members attend internal expertise meetings to stay up to date on new trends or principles within these stacks.
     - **Discussion** – Discussion of any points raised during the meeting.
     - **Actions** – Action points that arise from the meeting and need to be followed up on.
     - **Varia** – A fun closing round where everyone shares an interesting fact or event.
-- **Rocks** – Key goals we focus on (often quarterly). These are bigger goals we work towards and often form a workgroup (see below).
-- **Workgroups** – Small teams dedicated to specific topics or improvements.
+- **Work groups** – Small teams dedicated to specific topics or improvements.
 - **Support** - We are one team and there to help each other. Feel free to ask for help regarding Flutter or mobile questions in the circle-flutter Slack channel, private message or in person!
 
 #### 1.1 Flutter Setup
@@ -64,7 +62,7 @@ Next up follow [this tutorial](https://www.geeksforgeeks.org/how-to-install-coco
 Install Android studio [with this link](https://developer.android.com/studio/?gclid=Cj0KCQiAjJOQBhCkARIsAEKMtO3zEhdK4_I0CEZic3UH4dl-9gVXuHFR9dCl3TOHKjmv3xWLU3UxfhYaApfAEALw_wcB&gclsrc=aw.ds).
 ### Install the Flutter SDK
 Follow the steps in the following guide:
-https://docs.flutter.dev/get-started/install/macos/mobile-ios#install-the-flutter-sdk
+https://docs.flutter.dev/install/quick
 ### Install Flutter extensions
 Open VS Code and open the sidebar on the left. Click on the extensions tab and search for the "Flutter" extension or just visit the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) and download the flutter extension. This will automatically install the dart extension as well.
 
@@ -84,7 +82,6 @@ Other useful extensions:
 - Error lens: [marketplace link](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
 - Copy widget: [marketplace link](https://marketplace.visualstudio.com/items?itemName=FushiArt.copywidget)
 - Close tabs to the left: [marketplace link](https://marketplace.visualstudio.com/items?itemName=ctf0.close-tabs-to-the-left)
-- Copilot: [marketplace link](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - Surprise (download at your own risk): [marketplace link](https://marketplace.visualstudio.com/items?itemName=VirejDasani.incredibly-in-your-face)
 
 ### Install Mason & Bricks
@@ -119,7 +116,6 @@ Verify that all the bricks are from registry.brickhub.dev like below
 ```
 **If this is the case you should be ready to go!**
 
-*If you need more info on the bricks check [our guide](https://appwise.atlassian.net/wiki/x/C4BxP) for more info.*
 ### 2. Prerequisites
 
 * Basic knowledge of Dart
@@ -128,7 +124,7 @@ Verify that all the bricks are from registry.brickhub.dev like below
 
 ### 3. What are you going to build?
 
-In this CodeLab you are going to build a simple Todo app in Flutter. The app will contain a few screens where the user can create and manage tasks. The requirements are written out in Linear **TODO: Add Linear**.
+In this CodeLab you are going to build a simple Todo app in Flutter. The app will contain a few screens where the user can create and manage tasks. The requirements are written out in [Linear](https://linear.app/wisemen/project/l10-mobile-803a151e5214/issues).
 The designs for this app are here: [Figma wireframes](https://www.figma.com/file/hebgv4Qx8VanMAQkO1NFpa/Onboarding-to-do?node-id=407-4095&t=2qdyy89lKwN7dFw3-0)
 
 ### Let's get started!

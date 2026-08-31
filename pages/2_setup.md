@@ -40,13 +40,15 @@ static String get baseUrl {
 These flavors are used to switch between different environments. The baseUrl is used to make API calls to the correct environment.
 We use these different environments to test the app in different stages of development.
 * Development: Used for local development
-* QA: Used for testing the app before it goes to Staging
+* QA: Used by internal QA team (PM, other devs) for testing the app before it goes to Staging
 * Staging: Used by the client to test the app before it goes to Production
 * Production: Used for the final version of the app
 
-Add client id and client secrets in the same way:
+Add these secrets in the same way:
 * Client ID: `bdba526c-31b3-4740-a4e6-bfbaf96ec62e`
 * Client Secret: `55d5f96e-eb16-4e98-8822-27cba3474e01`
+* Zitadel App Id: `305078631263175721`
+* Zitadel Organization Id: `284257737964064935`
 
 Now add the following block for the `applicationId` getter in the `flavors.dart` file:
 ```dart
@@ -65,7 +67,7 @@ static String get applicationId {
 
 #### Use the terminal or IDE to link your project to GitHub
 
-We recommend to use a GIT GUI like [SourceTree](https://www.sourcetreeapp.com/) or [Fork](https://git-fork.com/).
+We recommend to use a GIT GUI like [Fork](https://git-fork.com/).
 As backup we will show you how to work with the ***terminal***.
 
 * Open the terminal in VSCode
@@ -81,92 +83,64 @@ You may now commit your local changes to the main branch with an 'init project' 
 
 ### 2.2 Our Branching strategy
 
-We use Trunk-base development. You can find more information about this
+We use Trunk-base development with release branches. You can find more information about this
 strategy [here](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development).
 
-* **main** branch: this is the main branch. This branch is always deployable and contains the latest release.
+* **main** branch: this is the main branch. This branch is always deployable and contains the latest updates.
 
 * **feature/...** branches: these branches are used to develop new features for the upcoming release and are pushed to main
 * **bugfix/...** branches: these branches are used to fix bugs in the app and are pushed to main
+* **release/x.x** branches: these branches are used to track release versions and their hot fixes
 
-You can use git by either using the terminal, IDE or a GUI tool like [SourceTree](https://www.sourcetreeapp.com/) or [Fork](https://git-fork.com/).
+You can use git by either using the terminal, IDE or a GUI tool like [Fork](https://git-fork.com/).
 
 Now checkout the **main** branch and create a new feature branch called **feature/setup-theme**.
 
 ### 2.3 Theme
-#### 2.3.1 Colors
-Open 'Colors' tab in the Figma file. Here you can find the colors that are used in the app.
+#### 2.3.1 WiseTheme
 
-Open `/theme/app_theme.dart` in the project and add the colors to the theme. Edit the _AppColors class like this:
+We set a general WiseTheme to use colors within the app. We do this by add this piece of code to `app.dart`
 ```dart
-class _AppColors {
-  static const white = Colors.white;
-  static const black = Colors.black;
-  static const blackPearl = Color.fromRGBO(27, 33, 45, 1);
-  static const sanJuan = Color.fromRGBO(71, 81, 97, 1);
-  static const shadowBlue = Color.fromRGBO(120, 135, 160, 1);
-  //...
+final theming = WiseTheming(
+  supportedThemes: supportedThemes,
+  targetPlatform: Theme.of(context).platform,
+  selectedTheme: ref.watch(AppSettingsProviders.themeMode).value,
+);
+return MaterialApp.router(
+  title: F.appName,
+  theme: theming.lightTheme,
+  darkTheme: theming.darkTheme,
+  highContrastTheme: theming.lightContrastTheme,
+  highContrastDarkTheme: theming.darkContrastTheme,
+  themeMode: theming.themeMode,
+  ... other app code
+);
+```
+
+This theme will make it easier to access the colors in the app from the context.
+You can do something similar to what this theme does to create text styles from context like this
+```dart
+extension TextThemeExtension on BuildContext {
+  AppStyles get appStyles => AppStyles(this);
+}
+
+class AppStyles {
+  const AppStyles(this.context);
+  final BuildContext context;
+
+  TextStyle get title => TextStyle(
+    fontWeight: .w600,
+    color: context.textColors.primary,
+    fontSize: 24,
+  );
+
+  TextStyle get smallestTitle => TextStyle(
+    fontWeight: .w600,
+    color: context.textColors.primary,
+    fontSize: 18,
+  );
+
+  ...
 }
 ```
-
-Add the rest of the colors yourself.
-
-#### 2.3.2 ColorScheme
-delete darkTheme from `app_theme.dart` and from `app.dart`.
-
-Edit the lightTheme from app_theme.dart like this:
-```dart
-colorScheme: const ColorScheme.light(
-      primary: _AppColors.sanJuan,
-      secondary: _AppColors.blackPearl,
-      surface: _AppColors.white,
-      onSurface: _AppColors.black,
-      onPrimary: _AppColors.catskillWhite,
-      primaryContainer: _AppColors.shadowBlue,
-      onPrimaryContainer: _AppColors.periwinkel,
-      tertiary: _AppColors.solitude,
-    ),
-```
-
-See if there is any room for improvement in the theme and colors. If you have any questions, don't hesitate to contact your buddy.
-
-Then open `theme.dart` and add the following code:
-```dart
-import 'package:flutter/material.dart';
-import 'app_theme.dart';
-import 'styles/styles.dart';
-import 'text_styles/app_text_styles.dart';
-
-extension AppThemeColorExtension on BuildContext {
-  Color get sanJuan => colorScheme.primary;
-  Color get blackPearl => colorScheme.secondary;
-  Color get solitude => colorScheme.tertiary;
-  Color get shadowBlue => colorScheme.primaryContainer;
-  Color get periwinkel => colorScheme.onPrimaryContainer;
-  Color get catskillWhite => colorScheme.onPrimary;
-  Color get black => colorScheme.onSurface;
-  Color get white => colorScheme.surface;
-
-  ColorScheme get colorScheme => Theme.of(this).colorScheme;
-}
-```
-
-This extension will make it easier to access the colors in the app from the context.
-
-#### 2.3.3 TextStyles
-In the `Theme.dart` file, add the following code:
-```dart
-extension TextStyleExtension on BuildContext {
-  TextStyle get normal => AppStyles.normal;
-  TextStyle get title => AppStyles.title;
-  TextStyle get appBarTitle => AppStyles.title;
-  TextStyle get label => AppStyles.label;
-  TextStyle get button => AppStyles.label;
-}
-```
-
-This extension will make it easier to access the text styles in the app from the context.
-
-You may now commit these theming changes to the created branch an create a PR to the develop branch. Assign your buddy as a reviewer.
-
-*If you need help with creating or resolving your pull request consult [our full guide](https://appwise.atlassian.net/wiki/x/DoBdPQ)*
+You may now commit these theming changes to the created branch an create a PR to the main branch. Assign your buddy as a reviewer.

@@ -150,7 +150,7 @@ class TodosDao extends DatabaseAccessor<Database> with _$TodosDaoMixin {
   }) async {
     await (delete(todosTable)
           ..where(
-            (tbl) => tbl.uuid.isNotIn(todos.map((e) => e.uuid.value).toList()),
+            (tbl) => tbl.uuid.isNotIn(todos.map((e) => e.uuid.value).toList()) & tbl.createdAt.isSmallerThanValue(DateTime.now().subtract(const Duration(days: 1))),
           ))
         .go();
   }
