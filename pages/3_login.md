@@ -18,9 +18,9 @@ final container = ProviderContainer(
         applicationId: F.zitadelApplicationId,
         organizationId: F.zitadelOrganisationId,
         buttonOptions: WiseZitadelButtonOptions(
-          color: (context) => context.sanJuan,
+          color: (context) => context.foregroundColors.primary,
           buttonTextStyle: (context) => context.button.copyWith(
-            color: context.catskillWhite,
+            color: context.textColors.primaryOnBrand,
           ),
         ),
         onLoginSuccess: (router, ref, token) async {
@@ -28,7 +28,8 @@ final container = ProviderContainer(
             return;
           }
           await ref.read(protectedClientProvider).setFreshToken(token: token);
-          router.replace(const TodosOverviewScreenRoute());
+          // TODO(anyone): Replace with todo list route
+          router.replace(const EmptyScreenRoute());
         },
         supportedTypes: [
           ZitadelLoginType(
